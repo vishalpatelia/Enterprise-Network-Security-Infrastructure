@@ -1,0 +1,86 @@
+! HO-R — Head Office Router
+! Public-sharing configuration backup
+! Source: user-provided Cisco Packet Tracer show running-config output
+! Password and enable-secret hashes are redacted where present.
+! Keep an unredacted original only in a private, secure location.
+!
+version 15.1
+service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+hostname HO-R
+enable secret 5 [REDACTED]
+ip dhcp excluded-address 192.168.10.1 192.168.10.20
+ip dhcp excluded-address 192.168.20.1 192.168.20.20
+ip dhcp pool HR
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ip dhcp pool FINANCE
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+no ip cef
+no ipv6 cef
+username admin privilege 15 secret 5 [REDACTED]
+ip ssh version 2
+ip domain-name enterprise.local
+spanning-tree mode pvst
+interface Loopback0
+ description SECURITY-LOG-TEST
+ no ip address
+interface GigabitEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ ip access-group HR-RESTRICT-FINANCE in
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+interface GigabitEthernet0/0.50
+ encapsulation dot1Q 50
+ ip address 192.168.50.1 255.255.255.0
+interface GigabitEthernet0/0.60
+ encapsulation dot1Q 60
+ ip address 192.168.60.1 255.255.255.0
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+interface Serial0/3/0
+ ip address 10.0.0.1 255.255.255.252
+ clock rate 2000000
+interface Serial0/3/1
+ ip address 10.0.0.5 255.255.255.252
+ clock rate 2000000
+interface Vlan1
+ no ip address
+ shutdown
+router ospf 1
+ log-adjacency-changes
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+ network 10.0.0.0 0.0.0.3 area 0
+ network 10.0.0.4 0.0.0.3 area 0
+ network 192.168.50.0 0.0.0.255 area 0
+ network 192.168.60.0 0.0.0.255 area 0
+ip classless
+ip flow-export version 9
+ip access-list extended HR-RESTRICT-FINANCE
+ deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+ permit ip any any
+logging 192.168.60.10
+line con 0
+line aux 0
+line vty 0 4
+ exec-timeout 5 0
+ login local
+ transport input ssh
+end
