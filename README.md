@@ -1,26 +1,25 @@
-
 # Enterprise Network Security Infrastructure
 
 ## Project Overview
 
-This project demonstrates the design, implementation, configuration, and security hardening of a multi-site enterprise network using Cisco Packet Tracer.
+This project demonstrates the design, implementation, configuration, and security hardening of a multi-site enterprise network using **Cisco Packet Tracer**.
 
-The lab consists of a Head Office and two branch offices. It focuses on enterprise network infrastructure, VLAN segmentation, routing, server monitoring, network security controls, and incident detection and response.
+The simulated infrastructure consists of a Head Office and two branch offices. It demonstrates enterprise networking concepts, VLAN segmentation, inter-VLAN routing, dynamic routing, server infrastructure, centralized monitoring, network security controls, and incident detection and response.
 
-The project is divided into four implementation phases and forms the networking foundation of a larger cybersecurity and cloud portfolio.
+The implementation is documented in four phases and provides a practical foundation for further cybersecurity and cloud security projects.
 
 ## Project Objectives
 
 - Design a multi-site enterprise network.
 - Implement VLAN segmentation and inter-VLAN routing.
 - Configure DHCP and dynamic routing using OSPF.
-- Establish communication between Head Office and branch offices.
+- Establish connectivity between Head Office and branch offices.
 - Configure DMZ and centralized Syslog monitoring.
-- Implement SSH-based secure device administration.
+- Implement secure remote administration using SSH.
 - Apply switch port security and access-control policies.
 - Secure unused switch ports and trunk interfaces.
-- Simulate an unauthorized-device incident.
-- Demonstrate incident detection, containment, recovery, and connectivity verification.
+- Simulate and detect an unauthorized-device incident.
+- Demonstrate incident containment, recovery, and connectivity verification.
 
 ## Technologies and Tools
 
@@ -29,17 +28,17 @@ The project is divided into four implementation phases and forms the networking 
 | Cisco Packet Tracer | Network design and simulation |
 | Cisco IOS CLI | Router and switch configuration |
 | VLAN | Network segmentation |
-| 802.1Q | VLAN trunking |
+| IEEE 802.1Q | VLAN trunking |
 | DHCP | Automatic IP address allocation |
 | OSPF | Dynamic routing |
 | SSH v2 | Secure remote administration |
 | Port Security | Unauthorized-device restriction |
 | Access Control Lists | Traffic access restrictions |
-| Syslog | Centralized network event monitoring |
+| Syslog | Centralized event monitoring |
 
 ## Network Architecture
 
-The simulated enterprise network contains:
+The simulated enterprise network includes:
 
 - Head Office
 - Branch A
@@ -68,7 +67,7 @@ The simulated enterprise network contains:
 
 ### WAN Routing
 
-OSPF Process 1, Area 0, is configured to support dynamic routing between the Head Office and branch routers.
+OSPF Process 1, Area 0, provides dynamic routing between the Head Office and branch routers.
 
 | Device | Serial Interface | IP Address |
 |---|---|---|
@@ -93,9 +92,9 @@ Implemented:
 - Branch network connectivity.
 - End-to-end connectivity testing.
 
-Documentation: `docs/Phase-1-Network-Foundation.md`
+**Documentation:** [Phase 1 – Network Foundation](docs/Phase-1-Network-Foundation.md)
 
-Evidence: `screenshots/Phase-1-Network-Foundation/`
+**Evidence:** [Phase 1 Screenshots](screenshots/Phase-1-Network-Foundation/)
 
 ### Phase 2 – Servers and Monitoring
 
@@ -109,9 +108,9 @@ Implemented:
 - Router and switch Syslog forwarding.
 - Centralized event monitoring.
 
-Documentation: `docs/Phase-2-Servers-and-Monitoring.md`
+**Documentation:** [Phase 2 – Servers and Monitoring](docs/Phase-2-Servers-and-Monitoring.md)
 
-Evidence: `screenshots/Phase-2-Servers-and-Monitoring/`
+**Evidence:** [Phase 2 Screenshots](screenshots/Phase-2-Servers-and-Monitoring/)
 
 ### Phase 3 – Network Security Hardening
 
@@ -127,9 +126,9 @@ Implemented:
 - HR-to-Finance access restriction using an ACL.
 - Security policy testing.
 
-Documentation: `docs/Phase-3-Network-Security-Hardening.md`
+**Documentation:** [Phase 3 – Network Security Hardening](docs/Phase-3-Network-Security-Hardening.md)
 
-Evidence: `screenshots/Phase-3-Network-Security-Hardening/`
+**Evidence:** [Phase 3 Screenshots](screenshots/Phase-3-Network-Security-Hardening/)
 
 ### Phase 4 – Incident Detection and Response
 
@@ -145,26 +144,26 @@ Implemented:
 - Port recovery.
 - Post-incident connectivity verification.
 
-**Incident result:** The switch detected an unauthorized MAC address, placed Fa0/8 into secure-shutdown state, and recorded a violation count of 1. The authorized endpoint was reconnected and connectivity was successfully restored.
+**Incident Result:** The switch detected an unauthorized MAC address, placed Fa0/8 into a secure-shutdown state, and recorded a violation count of 1. The authorized endpoint was reconnected, and connectivity was successfully restored.
 
-Documentation: `docs/Phase-4-Incident-Detection-and-Response.md`
+**Documentation:** [Phase 4 – Incident Detection and Response](docs/Phase-4-Incident-Detection-and-Response.md)
 
-Incident report: `reports/Final-Phase-4-Security-Incident-Report.docx`
+**Evidence:** [Phase 4 Screenshots](screenshots/Phase-4-Incident-Detection-and-Response/)
 
-Evidence: `screenshots/Phase-4-Incident-Detection-and-Response/`
+## Reviewed Device Configurations
 
-## Configuration Backups
+The repository contains reviewed configuration files for six network devices. Sensitive password hashes have been redacted from the public versions.
 
-The repository contains configuration backups for six network devices:
+| Device | Configuration |
+|---|---|
+| Head Office Router | [HO-R.txt](configurations/HO-R.txt) |
+| Head Office Switch | [HO-S.txt](configurations/HO-S.txt) |
+| Branch A Router | [Branch-A-Router.txt](configurations/Branch-A-Router.txt) |
+| Branch A Switch | [Branch-A-Switch.txt](configurations/Branch-A-Switch.txt) |
+| Branch B Router | [Branch-B-Router.txt](configurations/Branch-B-Router.txt) |
+| Branch B Switch | [Branch-B-Switch.txt](configurations/Branch-B-Switch.txt) |
 
-1. HO-R – Head Office Router
-2. HO-S – Head Office Switch
-3. Branch-A-Router
-4. Branch-A-Switch
-5. Branch-B-Router
-6. Branch-B-Switch
-
-Location: `configurations/`
+[View all device configurations](configurations/)
 
 ## Testing and Verification
 
@@ -188,6 +187,7 @@ The project includes testing and evidence for:
 Enterprise-Network-Security-Infrastructure/
 │
 ├── README.md
+│
 ├── docs/
 │   ├── Phase-1-Network-Foundation.md
 │   ├── Phase-2-Servers-and-Monitoring.md
@@ -200,20 +200,14 @@ Enterprise-Network-Security-Infrastructure/
 │   ├── Phase-3-Network-Security-Hardening/
 │   └── Phase-4-Incident-Detection-and-Response/
 │
-├── configurations/
-│   ├── HO-R.txt
-│   ├── HO-S.txt
-│   ├── Branch-A-Router.txt
-│   ├── Branch-A-Switch.txt
-│   ├── Branch-B-Router.txt
-│   └── Branch-B-Switch.txt
-│
-├── packet-tracer/
-│   └── Enterprise-Network-Security.pkt
-│
-└── reports/
-    ├── Final-Phase-4-Security-Incident-Report.docx
-    └── Phases-1-to-4-Overview.docx
+└── configurations/
+    ├── README.md
+    ├── HO-R.txt
+    ├── HO-S.txt
+    ├── Branch-A-Router.txt
+    ├── Branch-A-Switch.txt
+    ├── Branch-B-Router.txt
+    └── Branch-B-Switch.txt
 ```
 
 ## Learning Outcomes
@@ -221,16 +215,17 @@ Enterprise-Network-Security-Infrastructure/
 Through this project, I developed practical experience in:
 
 - Enterprise network design and implementation.
-- VLAN segmentation and routing.
+- VLAN segmentation and inter-VLAN routing.
 - Cisco router and switch configuration.
-- Dynamic routing and network troubleshooting.
-- Network access control and hardening.
+- Dynamic routing using OSPF.
+- Network troubleshooting and connectivity verification.
+- Network access control and security hardening.
 - Centralized Syslog monitoring.
 - Basic security incident detection and response.
 
 ## Future Improvements
 
-Planned extensions include:
+Planned extensions to the project include:
 
 - Network traffic analysis using Wireshark.
 - Vulnerability assessment.
@@ -244,11 +239,11 @@ Planned extensions include:
 
 This project was developed and tested in Cisco Packet Tracer. Security incidents and network behavior described here are simulated laboratory exercises, not production-network events.
 
-Configuration files shared publicly have sensitive password hashes redacted. No credentials or private keys should be committed to the repository.
+The public configuration files have sensitive password hashes redacted. Credentials and private keys should never be committed to a public repository.
 
 ---
 
 **Project:** Enterprise Network Security Infrastructure  
 **Implementation:** Phases 1–4  
 **Platform:** Cisco Packet Tracer  
-**Focus:** Networking, Network Security, Monitoring, and Incident Response
+**Focus:** Enterprise Networking, Network Security, Monitoring, and Incident Response
